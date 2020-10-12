@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import oit.is.z1439.kaizi.janken.model.Janken;
+
 @Controller
-public class lec02controller {
+public class Lec02Controller {
 
   /**
    * lec02というGETリクエストがあったら，lec02()を呼び出して，lec02.htmlを返すメソッド
@@ -15,7 +17,11 @@ public class lec02controller {
    * @return
    */
   @GetMapping("/lec02")
-  public String lec02() {
+  public String lec02(@RequestParam Integer jankenhand, ModelMap model) {
+    Janken hand = new Janken(jankenhand);
+    model.addAttribute("jankenhand", hand.playerhand());
+    model.addAttribute("cpuhand", hand.cpuhand());
+    model.addAttribute("score", hand.score());
     return "lec02.html";
   }
 

@@ -12,4 +12,23 @@
     Hi [[${username}]]
   </div>
 
+  <a href="/lec02?jankenhand=0">グー</a>
+  <a href="/lec02?jankenhand=1">チョキ</a>
+  <a href="/lec02?jankenhand=2">パー</a>
+
+  <p>
+  <div th:if="${jankenhand}">
+    あなたの手 [[${jankenhand}]]
+  </div>
+
+  <div th:if="${cpuhand}">
+    相手の手 [[${cpuhand}]]
+  </div>
+
+  <div th:if="${score}">
+    結果 [[${score}]]
+  </div>
+  </p>
+</body>
+
 </html>
