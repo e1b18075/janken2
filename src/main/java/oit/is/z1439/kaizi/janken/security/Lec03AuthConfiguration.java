@@ -10,7 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * Sample3AuthConfiguration
+ * Lec03AuthConfiguration
  */
 @Configuration
 @EnableWebSecurity
@@ -24,13 +24,13 @@ public class Lec03AuthConfiguration extends WebSecurityConfigurerAdapter {
 
     // $ sshrun htpasswd -nbBC 10 user1 pAssw0rd
     auth.inMemoryAuthentication().withUser("user1")
-        .password("$2y$10$rJ9yqGht2W96MdIJICRQQOuUiYrt2eDokKnDuZZof2DPs83PN6QdC").roles("USER");
-    auth.inMemoryAuthentication().withUser("admin")
-        .password("$2y$10$rJ9yqGht2W96MdIJICRQQOuUiYrt2eDokKnDuZZof2DPs83PN6QdC").roles("ADMIN");
+        .password("$2y$10$DtGEWB0dZl.zr7SIFKN6wefTSi8chG7s6Rta7W6qOdwtG8Hc78J7a").roles("USER");
+    auth.inMemoryAuthentication().withUser("user2")
+        .password("$2y$10$e56R7cIuP8s/lJ54fzGyi.8gXO2kOTQlpPtX7TRnz6MJjWY0WvY1W").roles("USER");
 
     // 開発中は↓の書き方でも良いが，平文でパスワードが保存される
-    // auth.inMemoryAuthentication().withUser("user1").password(passwordEncoder().encode("pAssw0rd")).roles("USER");
-    // auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder().encode("pAssw0rd")).roles("ADMIN");
+    // auth.inMemoryAuthentication().withUser("user1").password(passwordEncoder().encode("janken")).roles("USER");
+    // auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder().encode("password")).roles("USER");
   }
 
   @Bean

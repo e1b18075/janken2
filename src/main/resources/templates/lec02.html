@@ -1,20 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/schema/security">
+
 
 <head>
+  <div><a href="/logout">ログアウト</a></div>
+  <h1>Lec02 GET!</h1>
   <meta charset="utf-8">
   <title>SpringBoot Sample2-1</title>
 </head>
 
+
 <body>
-  <h1>Lec02 GET!</h1>
+  エントリー
+
+  <div th:if="${entry}">
+    DI利用
+    <ul>
+      <!--roomオブジェクトのroomNoというフィールドを指定している-->
+      <li>RoomNo:[[${room.roomNo}]]</li>
+      <!--eachは所謂for each．この場合roomオブジェクトのusersフィールドにあるすべてのデータを一通り表示する
+        thが指定されているので[]が不要になる-->
+      <li th:each="user : ${entry.users}">[[${user}]]</li>
+    </ul>
+  </div>
+
+<p>
   <div th:if="${username}">
     Hi [[${username}]]
   </div>
 
-  <a href="/lec02?jankenhand=0">グー</a>
-  <a href="/lec02?jankenhand=1">チョキ</a>
-  <a href="/lec02?jankenhand=2">パー</a>
+  <a href="/lec02?/Login?jankenhand=0">グー</a>
+  <a href="/lec02?/Login?jankenhand=1">チョキ</a>
+  <a href="/lec02?/Login?jankenhand=2">パー</a>
 
   <p>
   <div th:if="${jankenhand}">
@@ -29,6 +46,7 @@
     結果 [[${score}]]
   </div>
   </p>
+</p>
 </body>
 
 </html>
