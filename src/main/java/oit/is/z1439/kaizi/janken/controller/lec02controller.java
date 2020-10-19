@@ -1,5 +1,6 @@
 package oit.is.z1439.kaizi.janken.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +17,16 @@ public class Lec02Controller {
    *
    * @return
    */
-  @GetMapping("/lec02")
-  public String lec02(@RequestParam Integer jankenhand, ModelMap model) {
+
+  @GetMapping
+  public String lec02() {
+    return "lec02.html";
+  }
+
+  @Autowired
+
+  @GetMapping("/Login")
+  public String Login(@RequestParam Integer jankenhand, ModelMap model) {
     Janken hand = new Janken(jankenhand);
     model.addAttribute("jankenhand", hand.playerhand());
     model.addAttribute("cpuhand", hand.cpuhand());
@@ -25,7 +34,7 @@ public class Lec02Controller {
     return "lec02.html";
   }
 
-  @PostMapping("/lec02")
+  @PostMapping
   public String lec02(@RequestParam String username, ModelMap model) {
     model.addAttribute("username", username);
     return "lec02.html";
