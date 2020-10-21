@@ -24,13 +24,13 @@ public class Lec03AuthConfiguration extends WebSecurityConfigurerAdapter {
 
     // $ sshrun htpasswd -nbBC 10 user1 pAssw0rd
     auth.inMemoryAuthentication().withUser("user1")
-        .password("$2y$10$rJ9yqGht2W96MdIJICRQQOuUiYrt2eDokKnDuZZof2DPs83PN6QdC").roles("USER");
-    auth.inMemoryAuthentication().withUser("admin")
-        .password("$2y$10$rJ9yqGht2W96MdIJICRQQOuUiYrt2eDokKnDuZZof2DPs83PN6QdC").roles("ADMIN");
+        .password("$2y$10$N96U26un5vWEjfqOnGdYP.UTQU91oQKKYKOBsrE3mBbGyNJQpJqse").roles("USER");
+    auth.inMemoryAuthentication().withUser("user2")
+        .password("$2y$10$P8KoMERIA5rG6p.td/.dXOcOxZSsYgWZ2PZ5/pGucalTrV6/rg01G").roles("USER");
 
     // 開発中は↓の書き方でも良いが，平文でパスワードが保存される
-    // auth.inMemoryAuthentication().withUser("user1").password(passwordEncoder().encode("pAssw0rd")).roles("USER");
-    // auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder().encode("pAssw0rd")).roles("ADMIN");
+    // auth.inMemoryAuthentication().withUser("user1").password(passwordEncoder().encode("janken")).roles("USER");
+    // auth.inMemoryAuthentication().withUser("user2").password(passwordEncoder().encode("password")).roles("USER");
   }
 
   @Bean
